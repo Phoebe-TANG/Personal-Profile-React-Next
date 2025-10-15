@@ -113,7 +113,7 @@ export function AIChatbot() {
       {/* Floating Chat Button */}
       <div className="fixed bottom-6 right-6 z-50">
         {!isOpen && showPrompt && (
-          <div className="absolute bottom-full right-0 mb-4 animate-bounce-gentle">
+          <div className="absolute bottom-full mb-4 animate-bounce-gentle min-w-[110px] -right-3">
             <Card className="p-3 glass-effect border-border/50 shadow-xl max-w-[200px] relative">
               <button
                 onClick={() => setShowPrompt(false)}

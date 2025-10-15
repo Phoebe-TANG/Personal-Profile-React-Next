@@ -61,39 +61,38 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
-    <section id="projects" className="py-32 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-5xl font-semibold text-center mb-4">项目展示</h2>
-        <p className="text-center text-muted-foreground mb-20 text-lg">精选作品集</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">项目展示</h2>
 
-        <div className="grid sm:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div
+            <Card
               key={project.id}
-              className="cursor-pointer group"
+              className="overflow-hidden glass-effect border-border/50 shadow-lg hover:shadow-xl transition-all cursor-pointer group"
               onClick={() => setSelectedProject(project)}
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted mb-4">
+              <div className="aspect-video overflow-hidden bg-muted">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-foreground">
+              <div className="p-6 space-y-4">
+                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs font-normal">
+                    <Badge key={tag} variant="secondary" className="text-xs">
                       {tag}
                     </Badge>
                   ))}
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

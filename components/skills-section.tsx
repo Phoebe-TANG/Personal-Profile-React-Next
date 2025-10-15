@@ -43,27 +43,29 @@ const skillCategories: SkillCategory[] = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-32 px-4 sm:px-6 lg:px-8 section-light">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-5xl font-semibold text-center mb-4">技能专长</h2>
-        <p className="text-center text-muted-foreground mb-20 text-lg">掌握的技术与工具</p>
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">技能专长</h2>
 
-        <div className="space-y-12">
+        <div className="grid md:grid-cols-3 gap-8">
           {skillCategories.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-xl font-semibold mb-6">{category.title}</h3>
-              <div className="grid sm:grid-cols-2 gap-6">
+            <Card
+              key={category.title}
+              className="p-6 glass-effect border-border/50 shadow-lg hover:shadow-xl transition-all"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-6">{category.title}</h3>
+              <div className="space-y-5">
                 {category.skills.map((skill) => (
                   <div key={skill.name} className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-foreground">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-foreground font-medium">{skill.name}</span>
+                      <span className="text-muted-foreground">{skill.level}%</span>
                     </div>
-                    <Progress value={skill.level} className="h-1.5" />
+                    <Progress value={skill.level} className="h-2" />
                   </div>
                 ))}
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
